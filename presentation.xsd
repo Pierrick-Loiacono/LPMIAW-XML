@@ -1,1 +1,90 @@
-<!-- presentation.xsd -->
+<schema
+        xmlns:p="urn:presentation"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:presentation"
+        elementFormDefault="qualified">
+
+    <!--    Définition de l'élément racine-->
+    <element name="présentation" type="p:type_presentation"/>
+
+    <!--    Définition des complexe types-->
+    <complexType name="type_presentation">
+        <sequence maxOccurs="unbounded">
+            <element name="en-tête" type="p:type_entete"/>
+            <element name="diapo" type="p:type_diapo" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="type_entete">
+        <sequence maxOccurs="unbounded">
+            <element name="modèle" type="p:type_modele" maxOccurs="unbounded"/>
+            <element name="template" type="p:type_modele" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="type_diapo">
+        <sequence maxOccurs="unbounded">
+            <element name="titre" type="string"/>
+            <element name="corps" type="p:type_corps" minOccurs="0"/>
+            <element name="bloc" type="p:type_bloc" minOccurs="0"/>
+        </sequence>
+        <attribute name="ref_modèle" type="string"/>
+    </complexType>
+
+    <complexType name="type_modele">
+        <attribute name="nom" type="string" use="required"/>
+        <attribute name="color" type="string" use="optional"/>
+        <attribute name="taille" type="int" use="optional"/>
+    </complexType>
+
+
+    <complexType name="type_corps">
+        <sequence maxOccurs="unbounded" minOccurs="0">
+            <element name="bloc" type="p:type_bloc"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="type_para" mixed="true">
+        <sequence maxOccurs="unbounded" minOccurs="0">
+            <element name="gras" type="string" maxOccurs="unbounded" minOccurs="0"/>
+            <element name="italique" type="string" maxOccurs="unbounded" minOccurs="0"/>
+            <element name="couleur" type="string" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+        <attribute name="class" type="string" use="optional"/>
+    </complexType>
+
+    <complexType name="type_bloc">
+        <sequence maxOccurs="unbounded">
+            <element name="liste" type="p:type_liste" minOccurs="0"/>
+            <element name="para" type="p:type_para" minOccurs="0"/>
+            <element name="image" type="p:type_image" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="type_image">
+        <attribute name="src" type="string"/>
+    </complexType>
+
+    <complexType name="type_liste">
+        <sequence>
+            <element name="item" type="p:type_item" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="type" type="string"/>
+    </complexType>
+
+    <complexType name="type_item">
+        <sequence>
+            <element name="para" type="p:type_para" maxOccurs="unbounded"/>
+            <element name="liste" type="p:type_liste" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+</schema>
+
+
+        <!--<schema ...> définition de l'élément racine <presentation>-->
+        <!-- définition de types complexes (complexType) -> sequence, choice-->
+        <!--Attributs: minOccurs (int) maxOccurs (int ou unbunded)-->
+        <!-- Définition TypesSimples-->
