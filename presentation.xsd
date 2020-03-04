@@ -9,21 +9,25 @@
 
         <complexType>
             <sequence>
-                <element name="en-tête" >
+                <element name="en-tête">
                     <complexType>
                         <sequence>
                             <element name="modèle" maxOccurs="unbounded">
                                 <complexType>
-                                    <attribute  name="nom"  type="string" use="required"/>
+                                    <attribute name="nom" type="string" use="required"/>
                                     <attribute name="color" type="string" use="required"/>
                                     <attribute name="taille" type="integer" use="optional"/>
                                 </complexType>
                             </element>
                         </sequence>
                     </complexType>
+                    <unique name="uniqueName">
+                        <selector xpath="p:modèle"/>
+                        <field xpath="@nom"/>
+                    </unique>
                 </element>
                 <element name="diapo" maxOccurs="unbounded">
-                    <complexType >
+                    <complexType>
                         <sequence>
                             <element name="titre" type="string"/>
                             <element name="corps" type="p:type_corps"/>
@@ -34,23 +38,6 @@
             </sequence>
         </complexType>
     </element>
-<!--    &lt;!&ndash;    Définition de l'élément racine&ndash;&gt;-->
-<!--    <element name="présentation" type="p:type_presentation"/>-->
-
-<!--    &lt;!&ndash;    Définition des complexe types&ndash;&gt;-->
-<!--    <complexType name="type_presentation">-->
-<!--        <sequence maxOccurs="unbounded">-->
-<!--            <element name="en-tête" type="p:type_entete"/>-->
-<!--            <element name="diapo" type="p:type_diapo" maxOccurs="unbounded"/>-->
-<!--        </sequence>-->
-<!--    </complexType>-->
-
-<!--    <complexType name="type_entete">-->
-<!--        <sequence maxOccurs="unbounded">-->
-<!--            <element name="modèle" type="p:type_modele" maxOccurs="unbounded"/>-->
-<!--            <element name="template" type="p:type_modele" minOccurs="0"/>-->
-<!--        </sequence>-->
-<!--    </complexType>-->
 
     <complexType name="type_corps">
         <sequence maxOccurs="unbounded" minOccurs="0">

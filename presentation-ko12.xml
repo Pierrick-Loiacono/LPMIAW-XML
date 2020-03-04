@@ -1,0 +1,21 @@
+<!-- diapo sans titre -->
+<présentation xmlns="urn:presentation">
+    <en-tête>
+        <modèle nom="vert" color="11EE11"/>
+        <modèle/>
+    </en-tête>
+    <diapo ref_modèle="bleu">
+        <corps/>
+        <para>
+            <italique>hello</italique>
+        </para>
+        <bloc>
+            <image src="image.png"/>
+        </bloc>
+    </diapo>
+    <liste type="puce">
+        <item>
+            <para>1er item</para>
+        </item>
+    </liste>
+</présentation>

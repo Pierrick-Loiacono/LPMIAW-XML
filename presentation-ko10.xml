@@ -1,0 +1,21 @@
+<!-- diapo sans titre -->
+<présentation xmlns="urn:presentation">
+  <en-tête>
+    <modèle nom="bleu" color="0000EE" taille="18"/>
+  </en-tête>
+  <diapo ref_modèle="bleu">
+    <corps>
+      <bloc>
+        <liste type="numerotation">
+          <item>
+            <para>Para test</para>
+          </item>
+        </liste>
+      </bloc>
+    </corps>
+
+    <bloc>
+      <image src="image.png"/>
+    </bloc>
+  </diapo>
+</présentation>
